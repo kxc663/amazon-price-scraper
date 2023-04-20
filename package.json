@@ -1,0 +1,24 @@
+{
+  "name": "amzon-price-scraper",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "npx nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kxc663/amzon-price-scraper.git"
+  },
+  "author": "kaitao chen",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kxc663/amzon-price-scraper/issues"
+  },
+  "homepage": "https://github.com/kxc663/amzon-price-scraper#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "path": "^0.12.7"
+  }
+}
