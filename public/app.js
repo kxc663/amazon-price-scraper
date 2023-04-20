@@ -4,7 +4,7 @@ $("#searchButton").click(async function () {
         alert("Please enter a name");
     } else {
         const response = await $.get("/search", { q: searchName });
-        if (response === "Not Found") {
+        if (response === "N/A") {
             alert("No product found with this name.");
             return;
         } else if (response.error) {
