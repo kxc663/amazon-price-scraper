@@ -7,3 +7,24 @@ h1 {
     text-align: center;
     margin: 0 auto;
 }
+
+table {
+    border-collapse: collapse;
+    width: 80%;
+    margin: 0 auto;
+}
+
+th,
+td {
+    border: 1px solid black;
+    padding: 8px;
+    text-align: center;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+td.product-name {
+    width: 40%;
+}
