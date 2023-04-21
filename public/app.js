@@ -1,4 +1,5 @@
 const amazonResultBaseUrl = "https://www.amazon.com/"
+const priceMap = new Map();
 
 $("#searchButton").click(async function () {
     const searchName = $("#searchInput").val().trim();
@@ -19,6 +20,11 @@ $("#searchButton").click(async function () {
     }
 });
 
+$(".pop-up span").click(function () {
+    $("#pop-up").hide();
+    console.log("clicked");
+});
+
 async function generateTable(dataSet) {
     $("#displayTable").show();
     console.log(dataSet);
@@ -28,7 +34,7 @@ async function generateTable(dataSet) {
         const nameCell = document.createElement("td");
         const name = dataSet[i][0];
         nameCell.classList.add('product-name');
-        nameCell.innerHTML = `<a href="${amazonResultBaseUrl}${dataSet[i][1].url}">${name}</a>`;
+        nameCell.innerHTML = `<a href="${amazonResultBaseUrl}${dataSet[i][1].url}" target="_blank">${name}</a>`;
         row.appendChild(nameCell);
         const imageCell = document.createElement("td");
         const imageElement = document.createElement("img");
@@ -44,9 +50,23 @@ async function generateTable(dataSet) {
         row.appendChild(priceCell);
         const lowestPriceCell = document.createElement("td");
         const lowestPrice = await $.get("/lowestPrice", { id: dataSet[i][1].id });
-        console.log(lowestPrice);
-        lowestPriceCell.innerHTML = lowestPrice;
+        priceMap.set(dataSet[i][1].id, lowestPrice);
+        console.log(priceMap);
+        lowestPriceCell.innerHTML = lowestPrice[0];
         row.appendChild(lowestPriceCell);
+        const historyButton = document.createElement("button");
+        historyButton.innerHTML = "See Price Trend";
+        historyButton.classList.add("history-button");
+        historyButton.id = dataSet[i][1].id;
+        historyButton.addEventListener("click", async function () {
+            const chartSrc = priceMap.get(this.id)[1];
+            console.log(chartSrc);
+            $("#pop-up").show();
+            $("#pop-up-image").attr("src", chartSrc);
+        });
+        const historyCell = document.createElement("td");
+        historyCell.appendChild(historyButton);
+        row.appendChild(historyCell);
         tableBody.appendChild(row);
         await new Promise(resolve => setTimeout(resolve, 3000));
     }

@@ -14,6 +14,8 @@ app.use(express.static(static_path));
 
 amazonBaseUrl = "https://www.amazon.com/s?k="
 camelBaseUrl = "https://camelcamelcamel.com/product/"
+chartBaseUrl = "https://charts.camelcamelcamel.com/us/"
+chartConfig = "/amazon.png?force=1&zero=0&w=725&h=440&desired=false&legend=1&ilt=1&tp=all&fo=0&lang=en"
 
 app.get('/search', (req, res) => {
     const name = req.query.q;
@@ -68,7 +70,9 @@ app.get('/lowestPrice', async (req, res) => {
         .then(response => {
             const $ = cheerio.load(response.data);
             const price = $('.lowest_price').text();
-            res.send(extractPrice(price));
+            const priceChartUrl = chartBaseUrl + productID + chartConfig;
+            console.log(priceChartUrl);
+            res.send([extractPrice(price), priceChartUrl]);
         })
         .catch(error => {
             console.log(error);
