@@ -1,5 +1,6 @@
 h1 {
     text-align: center;
+    font-size: 40px;
 }
 
 #searchArea {
@@ -8,10 +9,31 @@ h1 {
     margin: 0 auto;
 }
 
+#searchInput {
+    font-size: 30px;
+}
+
+#searchButton {
+    font-size: 30px;
+}
+
+#previousPage{
+    position: absolute;
+    font-size: 20px;
+    left: 20%;
+}
+
+#nextPage{
+    position: absolute;
+    font-size: 20px;
+    right: 20%;
+}
+
 table {
     border-collapse: collapse;
     width: 80%;
     margin: 0 auto;
+    padding-top: 5%;
 }
 
 th,

@@ -1,7 +1,20 @@
 const amazonResultBaseUrl = "https://www.amazon.com/"
 const priceMap = new Map();
 
+$("#nextPage").click(async function (){
+    const searchName = $("#searchInput").val().trim();
+    const pageNum = await $.get("/page", {page: "next"});
+    console.log(pageNum);
+});
+
+$("#previousPage").click(async function (){
+    const searchName = $("#searchInput").val().trim();
+    const pageNum = await $.get("/page", {page: "previous"});
+    console.log(pageNum);
+});
+
 $("#searchButton").click(async function () {
+    $("#displayTable tbody").empty();
     const searchName = $("#searchInput").val().trim();
     if (searchName === "") {
         alert("Please enter a name");
@@ -14,7 +27,6 @@ $("#searchButton").click(async function () {
             throw new Error(response.error);
         } else {
             generateTable(response);
-            console.log(response.length);
             console.log("success");
         }
     }
@@ -22,12 +34,10 @@ $("#searchButton").click(async function () {
 
 $(".pop-up span").click(function () {
     $("#pop-up").hide();
-    console.log("clicked");
 });
 
 async function generateTable(dataSet) {
     $("#displayTable").show();
-    console.log(dataSet);
     const tableBody = document.getElementById("tableBody");
     for (var i = 0; i < dataSet.length; i++) {
         const row = document.createElement("tr");
@@ -49,10 +59,25 @@ async function generateTable(dataSet) {
         priceCell.innerHTML = price;
         row.appendChild(priceCell);
         const lowestPriceCell = document.createElement("td");
-        const lowestPrice = await $.get("/lowestPrice", { id: dataSet[i][1].id });
+        const lowestPrice = await $.get("/lowestPrice", { id: dataSet[i][1].id, name: dataSet[i][0] });
+        let current;
+        let history;
+        if(lowestPrice[0] != null){
+            history = parseInt(lowestPrice[0].replace(/[^\d.]/g, ''), 10);
+        } else{
+            history = Infinity;
+        }
+        if(price != null){
+            current = parseInt(price.replace(/[^\d.]/g, ''), 10)
+        } else{
+            current = Infinity;
+        }
+        if(current >= history){
+            lowestPriceCell.innerHTML = lowestPrice[0];
+        } else {
+            lowestPriceCell.innerHTML = "Best Price all-time"
+        }
         priceMap.set(dataSet[i][1].id, lowestPrice);
-        console.log(priceMap);
-        lowestPriceCell.innerHTML = lowestPrice[0];
         row.appendChild(lowestPriceCell);
         const historyButton = document.createElement("button");
         historyButton.innerHTML = "See Price Trend";
@@ -60,7 +85,6 @@ async function generateTable(dataSet) {
         historyButton.id = dataSet[i][1].id;
         historyButton.addEventListener("click", async function () {
             const chartSrc = priceMap.get(this.id)[1];
-            console.log(chartSrc);
             $("#pop-up").show();
             $("#pop-up-image").attr("src", chartSrc);
         });

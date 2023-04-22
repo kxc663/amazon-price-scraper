@@ -8,15 +8,19 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"
         integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script type="module" src="./app.js"></script>
-    <title>Amazon Price Checker</title>
+    <title>Amazon Price Tracker</title>
 </head>
 
 <body>
-    <h1>Amazon Price Checker</h1>
+    <h1>Amazon Price Tracker</h1>
     <div id="searchArea">
         <input type="text" id="searchInput" placeholder="Search for a product">
         <button id="searchButton">Search</button>
     </div> <br>
+    <div id="pageSwitchArea" hidden>
+        <button id="previousPage">&#8592</button>
+        <button id="nextPage">&#8594</button>
+    </div> <br> <br>
     <table id="displayTable" hidden>
         <thead>
             <tr>
@@ -24,6 +28,7 @@
                 <th>Image</th>
                 <th>Current Price</th>
                 <th>History Lowest Price</th>
+                <th>Graph Chart</th>
             </tr>
         </thead>
         <tbody id="tableBody">
