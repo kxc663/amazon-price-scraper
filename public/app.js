@@ -1,34 +1,33 @@
 const amazonResultBaseUrl = "https://www.amazon.com/"
-
+let isSuccess = false;
+let currentPage = 1;
 $("#nextPage").click(async function () {
-    const searchName = $("#searchInput").val().trim();
-    const pageNum = await $.get("/page", { page: "next" });
-    console.log(pageNum);
+    if (isSuccess) {
+        window.location.reload();
+        isSuccess = false;
+        currentPage = await $.get("/page", { page: "next" });
+        $("#currentPage").text("Page " + currentPage);
+        search();
+    } else {
+        alert("Please wait the page to completely load before switching page!")
+    }
+
 });
 
 $("#previousPage").click(async function () {
-    const searchName = $("#searchInput").val().trim();
-    const pageNum = await $.get("/page", { page: "previous" });
-    console.log(pageNum);
+    if (isSuccess) {
+        window.location.reload();
+        isSuccess = false;
+        currentPage = await $.get("/page", { page: "previous" });
+        $("#currentPage").text("Page " + currentPage);
+        search();
+    } else {
+        alert("Please wait the page to completely load before switching page!")
+    }
 });
 
 $("#searchButton").click(async function () {
-    $("#displayTable tbody").empty();
-    const searchName = $("#searchInput").val().trim();
-    if (searchName === "") {
-        alert("Please enter a name");
-    } else {
-        const response = await $.get("/search", { q: searchName });
-        if (response === "N/A") {
-            alert("No product found with this name.");
-            return;
-        } else if (response.error) {
-            throw new Error(response.error);
-        } else {
-            generateTable(response);
-            console.log("success");
-        }
-    }
+    search();
 });
 
 $(".pop-up span").click(function () {
@@ -68,8 +67,10 @@ async function generateTable(dataSet) {
         historyCell.id = "history" + i;
         row.appendChild(historyCell);
     }
+    $("#pageSwitchArea").show();
     $(".copyright").css({
-        "padding-top": "10px"});
+        "padding-top": "10px"
+    });
     generateHistory(dataSet, priceMap);
 }
 
@@ -96,7 +97,7 @@ async function generateHistory(dataSet, priceMap) {
             lowestPriceCell.innerHTML = "Best Price all-time"
         }
         const historyButton = document.createElement("button");
-        historyButton.innerHTML = "<img src='./img/chartBtn.png' style='width: 50px'>"; 
+        historyButton.innerHTML = "<img src='./img/chartBtn.png' style='width: 50px'>";
         historyButton.classList.add("history-button");
         historyButton.id = dataSet[i][1].id;
         historyButton.addEventListener("click", async function () {
@@ -107,6 +108,25 @@ async function generateHistory(dataSet, priceMap) {
         const historyCell = document.getElementById("history" + i);
         historyCell.appendChild(historyButton);
         await new Promise(resolve => setTimeout(resolve, 3000));
+    }
+    isSuccess = true;
+}
+
+async function search() {
+    $("#displayTable tbody").empty();
+    const searchName = $("#searchInput").val().trim();
+    if (searchName === "") {
+        alert("Please enter a name");
+    } else {
+        const response = await $.get("/search", { q: searchName });
+        if (response === "N/A") {
+            alert("No product found with this name.");
+            return;
+        } else if (response.error) {
+            throw new Error(response.error);
+        } else {
+            generateTable(response);
+        }
     }
 }
 
@@ -132,3 +152,11 @@ async function loadImage(url, elem) {
         elem.src = url;
     });
 }
+
+setInterval(function () {
+    if (currentPage == 1) {
+        $("#previousPage").prop("disabled", true);
+    } else{
+        $("#previousPage").prop("disabled", false);
+    }
+}, 1000);

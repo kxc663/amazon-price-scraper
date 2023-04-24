@@ -21,6 +21,8 @@ chartConfig_used = "/amazon-new-used.png?force=1&zero=0&w=855&h=513&desired=fals
 
 let currentPage = 1;
 
+// Decrease the possiblilty of getting blocked by Amazon
+// Note: this is not a guarantee that you will not get blocked by Amazon since Amazon can still block you based on your IP address
 const config = {
     headers: {
         "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36",
@@ -108,7 +110,7 @@ app.get('/page', async (req, res) => {
         res.send(currentPage.toString());
         console.log(currentPage);
     }
-    console.log(pageOperation);
+    console.log(pageOperation, currentPage);
 });
 
 function extractPrice(str) {
