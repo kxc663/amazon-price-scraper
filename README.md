@@ -1,12 +1,13 @@
 # amzon-price-scraper
 ## Instruction:
+Link to website: [https://amzon-price-scraper.onrender.com/](https://amzon-price-scraper.onrender.com/)
 
 ## Write up:
 ### What?
-Link to website: [https://amzon-price-scraper.onrender.com/](https://amzon-price-scraper.onrender.com/)
+An Amazon price scraper is a tool or software that extracts pricing information and other relevant data from Amazon's website to help users monitor and analyze product prices more effectively. This type of software can gather various data points, such as the product name, product images, current price, and historical price information. It then presents this information in an organized and user-friendly manner by using tables and charts for easy visualization and interpretation.
 
 ### Why?
-An Amazon price scraper is a tool or software that extracts pricing information from Amazon's website. While Amazon offers millions of products for sale, keeping track of price fluctuations and finding the best deals can be challenging for consumers. 
+While Amazon offers millions of products for sale, keeping track of price fluctuations and finding the best deals can be challenging for consumers. 
 - Price tracking: Users can monitor the prices of specific items over time, allowing them to identify the best time to buy, take advantage of discounts, or wait for prices to drop.
 - Price analysis: By collecting pricing data from Amazon, users can analyze trends and patterns, which can be valuable for market research and business intelligence purposes.
 - Price monitor: Business person can use amazon price scraper to monitor the prices of competitors' products to ensure their pricing remains competitive and adjust prices based on market conditions.
