@@ -31,6 +31,7 @@ An Amazon price scraper can be beneficial for various individuals and businesses
 - Amazon Logo: https://en.wikipedia.org/wiki/File:Amazon_logo.svg
 - Button image: https://www.freepik.com/
 - Background: https://www.wallpaperflare.com/
+- Loading gif: https://tenor.com/view/loading-gif-26347469
 ## How to test locally
 1. Download node.js
 2. `git clone git@github.com:kxc663/amzon-price-scraper.git`
