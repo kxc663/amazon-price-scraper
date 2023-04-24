@@ -21,13 +21,20 @@ chartConfig_used = "/amazon-new-used.png?force=1&zero=0&w=855&h=513&desired=fals
 
 let currentPage = 1;
 
+const config = {
+    headers: {
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36",
+        "cookie": 'session-id=132-5124472-2562003; session-id-time=2082787201l; i18n-prefs=USD; skin=noskin; ubid-main=130-4010729-2819465; session-token="UyeJ80rEwKpnRsCSq31OYKe/2mveP9mW+8cVhqiw1zfSv00E4zqBjLBvMeqlnCU9136SOK8+i8Vwo8hzWRVDkzNBmXNwcxvZtp7mh1rnoZwA67x+JmL0Nxr/yYkEHFJQIAxAW+CbF00EBomOajU5Nk+DF/Dk51Ot96yCHvDrsc9AwUl9yJuqn5OmTrUPrs8LTsAEcG/GkjqRyLN9j+ATm0WX9AMjDlS2K2yd6DmEzfY='
+    }
+}
+
 app.get('/search', (req, res) => {
     const name = req.query.q;
     amazonProductUrl = amazonBaseUrl + name + amazonPage + currentPage;
     // get the html from the amazon product url
     // parse the html to get the product name, picture, and price
     // return the product name, picture, and price
-    axios.get(amazonProductUrl)
+    axios.get(amazonProductUrl, config)
         .then(response => {
             const $ = cheerio.load(response.data);
             const products = new Map();
