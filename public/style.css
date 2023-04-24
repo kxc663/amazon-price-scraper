@@ -1,6 +1,7 @@
 body {
-    background: linear-gradient(0deg, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), url('./img/background.jpg');
+    background: linear-gradient(0deg, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7)), url('./img/background.jpg');
     font-size: 20pt;
+    font-family: "Gill Sans", sans-serif;
 }
 h1 {
     text-align: center;
@@ -89,4 +90,9 @@ td.product-name {
 
 .history-button {
     cursor: pointer;
+}
+
+.copyright {
+    font-size: small;
+    padding-top: 30%;
 }

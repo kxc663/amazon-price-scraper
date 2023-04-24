@@ -68,6 +68,8 @@ async function generateTable(dataSet) {
         historyCell.id = "history" + i;
         row.appendChild(historyCell);
     }
+    $(".copyright").css({
+        "padding-top": "10px"});
     generateHistory(dataSet, priceMap);
 }
 
