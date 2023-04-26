@@ -53,7 +53,6 @@ An Amazon price scraper can be beneficial for various individuals and businesses
 ![History Price](https://github.com/kxc663/amzon-price-scraper/blob/main/screenshots/Chart.png)
 
 ## Reference:
-- Price chart: https://camelcamelcamel.com/
 - Price detail: https://amazon.com/
 - Amazon Logo: https://en.wikipedia.org/wiki/File:Amazon_logo.svg
 - Button image: https://www.freepik.com/
