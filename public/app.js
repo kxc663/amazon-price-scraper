@@ -69,7 +69,7 @@ async function generateTable(dataSet) {
     }
     $("#pageSwitchArea").show();
     $(".copyright").css({
-        "padding-top": "10px"
+        "padding-top": "40px"
     });
     generateHistory(dataSet, priceMap);
 }

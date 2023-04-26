@@ -21,9 +21,35 @@ An Amazon price scraper can be beneficial for various individuals and businesses
 - Improve the speed and avoid 'too many requests' errors
 
 ### Why I choose not to extend Project 1
+**Pros:**
 - The current functionality of the website is comprehensive, providing most of the essential features users require. Expanding further might not yield significant benefits in terms of user experience.
 - Improving the download speed would necessitate upgrades to the server equipment, which may be costly to implement since I am using the free server right now.
 - To access higher resolution videos, users are required to sign in to Bilibili. As a result, you cannot directly scrape high-resolution video URLs from the website without compromising user privacy and security.
+- All of the aforementioned points suggest that extending Project 1 may lead to numerous difficulties. Therefore, initiating a new project would be a better solution to avoid these issues.
+
+**Cons:**
+- The website for Project 1 may only offer basic downloading functionality as some advanced features, such as history, favorites, and the ability to change download resolution, may not be available.
+- The development direction for Project 2 may require additional consideration as it may not be necessary for directly extending Project 1.
+
+## How to test locally
+1. Download node.js
+2. `git clone git@github.com:kxc663/amzon-price-scraper.git`
+3. `npm install`
+4. `npm start`
+5. Open site with url: [localhost:8000/](localhost:8000/)
+
+## Screenshots
+### Home Page
+- Use the url at the beginning to open the page in the broswer and you can get the following home page
+
+### Search Box
+- Type in the product you would like to search on Amazon and click on 'Search'
+
+### Search Result Page
+- The search results will be presented in a table format. Please allow the server some additional time to retrieve the historical pricing information and create a chart
+
+### History Price Chart Page
+- To access the chart page, click on the green chart button located on the far right of each row in the table. The chart page will resemble the following format
 
 ## Reference:
 - Price chart: https://camelcamelcamel.com/
@@ -32,9 +58,3 @@ An Amazon price scraper can be beneficial for various individuals and businesses
 - Button image: https://www.freepik.com/
 - Background: https://www.wallpaperflare.com/
 - Loading gif: https://tenor.com/view/loading-gif-26347469
-## How to test locally
-1. Download node.js
-2. `git clone git@github.com:kxc663/amzon-price-scraper.git`
-3. `npm install`
-4. `npm start`
-5. Open site with url: [localhost:8000/](localhost:8000/)
