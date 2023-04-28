@@ -3,7 +3,7 @@ let isSuccess = false;
 let currentPage = 1;
 $("#nextPage").click(async function () {
     if (isSuccess) {
-        window.location.reload();
+        //window.location.reload();
         isSuccess = false;
         currentPage = await $.get("/page", { page: "next" });
         $("#currentPage").text("Page " + currentPage);
@@ -16,7 +16,7 @@ $("#nextPage").click(async function () {
 
 $("#previousPage").click(async function () {
     if (isSuccess) {
-        window.location.reload();
+        //window.location.reload();
         isSuccess = false;
         currentPage = await $.get("/page", { page: "previous" });
         $("#currentPage").text("Page " + currentPage);
@@ -115,6 +115,7 @@ async function generateHistory(dataSet, priceMap) {
 async function search() {
     $("#displayTable tbody").empty();
     const searchName = $("#searchInput").val().trim();
+    console.log(searchName);
     if (searchName === "") {
         alert("Please enter a name");
     } else {

@@ -33,6 +33,7 @@ const config = {
 app.get('/search', (req, res) => {
     const name = req.query.q;
     amazonProductUrl = amazonBaseUrl + name + amazonPage + currentPage;
+    console.log(amazonProductUrl);
     // get the html from the amazon product url
     // parse the html to get the product name, picture, and price
     // return the product name, picture, and price
@@ -90,7 +91,6 @@ app.get('/lowestPrice', async (req, res) => {
             } else {
                 priceChartUrl = chartBaseUrl + productID + chartConfig_used;
             }
-            console.log(priceChartUrl);
             res.send([extractPrice(price), priceChartUrl]);
         })
         .catch(error => {
