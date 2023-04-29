@@ -1,4 +1,4 @@
-# amzon-price-scraper
+# amazon-price-scraper
 ## Instruction:
 Link to website: [https://amazon-price-scraper.onrender.com/](https://amazon-price-scraper.onrender.com/)
 
