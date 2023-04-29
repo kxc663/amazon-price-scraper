@@ -1,5 +1,6 @@
 const amazonResultBaseUrl = "https://www.amazon.com/"
 let isSuccess = false;
+let firstSearch = true;
 let currentPage = 1;
 $("#nextPage").click(async function () {
     if (isSuccess) {
@@ -27,6 +28,9 @@ $("#previousPage").click(async function () {
 });
 
 $("#searchButton").click(async function () {
+    if(firstSearch){
+        firstSearch = false;
+    }
     isSuccess = false;
     currentPage = 1;
     $("#currentPage").text("Page " + currentPage);
@@ -163,5 +167,10 @@ setInterval(function () {
         $("#previousPage").prop("disabled", true);
     } else{
         $("#previousPage").prop("disabled", false);
+    }
+    if(isSuccess || firstSearch){
+        $("#searchButton").prop("disabled", false);
+    } else {
+        $("#searchButton").prop("disabled", true);
     }
 }, 1000);
