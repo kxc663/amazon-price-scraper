@@ -113,6 +113,11 @@ app.get('/page', async (req, res) => {
     console.log(pageOperation, currentPage);
 });
 
+app.get('/reset', async (req, res) => {
+    currentPage = 1;
+    res.send(currentPage.toString());
+});
+
 function extractPrice(str) {
     const regex = /(\$[\d,]+\.\d+)/;
     const match = regex.exec(str);

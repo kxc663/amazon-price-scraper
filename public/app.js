@@ -27,6 +27,10 @@ $("#previousPage").click(async function () {
 });
 
 $("#searchButton").click(async function () {
+    isSuccess = false;
+    currentPage = 1;
+    $("#currentPage").text("Page " + currentPage);
+    await $.get("/reset");
     search();
 });
 
