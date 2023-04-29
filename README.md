@@ -1,4 +1,6 @@
 # amazon-price-scraper
+## Project Demo
+Link: [Project 2 Demo Video](https://www.youtube.com/watch?v=obecaqssGB0/)
 ## Instruction:
 Link to website: [https://amazon-price-scraper.onrender.com/](https://amazon-price-scraper.onrender.com/)
 
