@@ -1,6 +1,6 @@
 # amazon-price-scraper
 ## Videos
-Link to Project Brainstorm (Timestamp 00:00:40 - 00:02:00): [Project 2 Brainstorm Video](https://www.youtube.com/watch?v=vPb4-afGQss)
+Link to Project Brainstorm (Timestamp 00:00:40 - 00:02:00): [Project 2 Brainstorm Video](https://www.youtube.com/watch?v=vPb4-afGQss)    
 Link to Project Demo: [Project 2 Demo Video](https://www.youtube.com/watch?v=obecaqssGB0/)
 
 ## Instruction:
