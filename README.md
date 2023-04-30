@@ -48,12 +48,50 @@ An Amazon price tracker can be beneficial for various individuals and businesses
 ![Home Page](https://github.com/kxc663/amzon-price-scraper/blob/main/screenshots/Home.png)
 ### Search Box
 - Type in the product you would like to search on Amazon and click on 'Search' button
+- Code Sample:  
+``` javascript
+$("#searchButton").click(async function () {
+  if(firstSearch){
+    firstSearch = false;
+  }
+  isSuccess = false;
+  currentPage = 1;
+  $("#currentPage").text("Page " + currentPage);
+  await $.get("/reset");
+  search();
+});```
 ![Search Box](https://github.com/kxc663/amzon-price-scraper/blob/main/screenshots/Search.png)
 ### Search Result Page
 - The search results will be presented in a table format (including name with link to amazon, image, current price, history lowest price, and history price chart button). Please allow the server some additional time to retrieve the historical pricing information and create a chart
+- Code Sample:
+``` javascript
+axios.get(amazonProductUrl, config)
+  .then(response => {
+    const $ = cheerio.load(response.data);
+    const products = new Map();
+    $('.sg-col-20-of-24.s-result-item.s-asin.sg-col-0-of-12.sg-col-16-of-20.sg-col.s-widget-spacing-small.sg-col-12-of-16').each((i, element) => {
+      const productName = $(element).find('span.a-size-medium').text();
+      const productPrice = $(element).find('span.a-price > span.a-offscreen').text()
+      const productImage = $(element).find('img.s-image').attr('src');
+      const productID = $(element).attr('data-asin');
+      const productURL = $(element).find('a.a-link-normal.a-text-normal').attr('href');
+      products.set(productName, {
+        price: productPrice,
+        image: productImage,
+        id: productID,
+        url: productURL
+      });
+});```
+
 ![Search Result](https://github.com/kxc663/amzon-price-scraper/blob/main/screenshots/Result.png)
 ### History Price Chart Page
 - To access the chart page, click on the green chart button located on the far right of each row in the table. The chart page will resemble the following format
+``` javascript
+historyButton.addEventListener("click", async function () {
+  const chartSrc = lowestPrice[1];
+  $("#pop-up").show();
+  $("#pop-up-image").attr("src", chartSrc);
+});``` 
 ![History Price](https://github.com/kxc663/amzon-price-scraper/blob/main/screenshots/Chart.png)
 
 ## Reference:
