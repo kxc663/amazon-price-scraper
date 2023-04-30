@@ -59,7 +59,8 @@ $("#searchButton").click(async function () {
   $("#currentPage").text("Page " + currentPage);
   await $.get("/reset");
   search();
-});```
+});
+```
 ![Search Box](https://github.com/kxc663/amzon-price-scraper/blob/main/screenshots/Search.png)
 ### Search Result Page
 - The search results will be presented in a table format (including name with link to amazon, image, current price, history lowest price, and history price chart button). Please allow the server some additional time to retrieve the historical pricing information and create a chart
@@ -81,7 +82,8 @@ axios.get(amazonProductUrl, config)
         id: productID,
         url: productURL
       });
-});```
+});
+```
 
 ![Search Result](https://github.com/kxc663/amzon-price-scraper/blob/main/screenshots/Result.png)
 ### History Price Chart Page
@@ -91,7 +93,8 @@ historyButton.addEventListener("click", async function () {
   const chartSrc = lowestPrice[1];
   $("#pop-up").show();
   $("#pop-up-image").attr("src", chartSrc);
-});``` 
+});
+``` 
 ![History Price](https://github.com/kxc663/amzon-price-scraper/blob/main/screenshots/Chart.png)
 
 ## Reference:
